@@ -29,6 +29,13 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @Column(nullable = false)
+    private boolean enabled = false;
+
+    @Column(name = "verification_token", length = 100, nullable = true)
+    private String verificationToken;
+
+
     @PrePersist
     public void prePersist() {
         if (username == null) {

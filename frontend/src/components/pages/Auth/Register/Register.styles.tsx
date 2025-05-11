@@ -76,18 +76,27 @@ export const Button = styled.button`
   }
 `;
 
-export const ErrorMessage = styled.div`
+export const ErrorMessage = styled.p`
   color: #dc3545;
+  margin-bottom: 1rem;
   font-size: 0.9rem;
-  text-align: center;
-  margin-top: 0.5rem;
 `;
 
-export const LoginLink = styled.div`
+export const SuccessMessage = styled.p`
+  color: #28a745;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  background-color: #d4edda;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #c3e6cb;
+`;
+
+export const LoginLink = styled.p`
   text-align: center;
   margin-top: 1rem;
-  color: #666;
   font-size: 0.9rem;
+  color: #666;
 
   span {
     color: #4a90e2;

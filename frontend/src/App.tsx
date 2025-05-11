@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import Layout from './components/layout/Layout';
 import Login from './components/pages/Auth/Login/Login';
 import Register from './components/pages/Auth/Register/Register';
+import VerifyEmail from './components/pages/Auth/VerifyEmail/VerifyEmail';
 import Dashboard from './components/pages/Dashboard/Dashboard';
 import Investments from './components/pages/Investments/Investments';
 import AddInvestment from './components/pages/AddInvestment/AddInvestment';
@@ -52,6 +53,11 @@ const App: React.FC = () => {
         <Route path="/register" element={
           <PublicRoute>
             <Register />
+          </PublicRoute>
+        } />
+        <Route path="/verify-email" element={
+          <PublicRoute>
+            <VerifyEmail />
           </PublicRoute>
         } />
         

@@ -13,7 +13,8 @@ import {
   ErrorMessage,
   LoginLink,
   PasswordRequirements,
-  RequirementItem
+  RequirementItem,
+  SuccessMessage
 } from './Register.styles';
 
 const Register: React.FC = () => {
@@ -26,6 +27,7 @@ const Register: React.FC = () => {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   const [passwordChecks, setPasswordChecks] = useState({
     hasMinLength: false,
@@ -79,8 +81,13 @@ const Register: React.FC = () => {
         password: formData.password
       });
 
-      localStorage.setItem('user', JSON.stringify(response.data));
-      navigate('/');
+      setMessage('Kayıt başarılı! Lütfen e-posta adresinize gönderilen doğrulama bağlantısına tıklayın.');
+      setFormData({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      });
     } catch (err: any) {
       setError(err.response?.data?.message || 'Kayıt işlemi başarısız oldu');
     } finally {
@@ -93,6 +100,8 @@ const Register: React.FC = () => {
       <RegisterCard>
         <Title>Kayıt Ol</Title>
         <Form onSubmit={handleSubmit}>
+          {message && <SuccessMessage>{message}</SuccessMessage>}
+          {error && <ErrorMessage>{error}</ErrorMessage>}
           <FormGroup>
             <Label htmlFor="name">Ad Soyad</Label>
             <Input
@@ -157,8 +166,6 @@ const Register: React.FC = () => {
               required
             />
           </FormGroup>
-
-          {error && <ErrorMessage>{error}</ErrorMessage>}
 
           <Button type="submit" disabled={isLoading}>
             {isLoading ? 'Kayıt Yapılıyor...' : 'Kayıt Ol'}

@@ -23,20 +23,6 @@ const Logo = styled.div`
   cursor: pointer;
 `;
 
-const LogoutButton = styled.button`
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #c82333;
-  }
-`;
-
 const TopNavbar: React.FC = () => {
   const navigate = useNavigate();
 
@@ -46,11 +32,6 @@ const TopNavbar: React.FC = () => {
       navigate('/login');
     }
   }, [navigate]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    navigate('/login');
-  };
 
   const user = JSON.parse(localStorage.getItem('user') || '{"name": "Misafir"}');
 
@@ -62,7 +43,6 @@ const TopNavbar: React.FC = () => {
           {user?.name?.charAt(0).toUpperCase() || 'U'}
         </UserAvatar>
         <UserName>{user?.name || 'Kullanıcı'}</UserName>
-        <LogoutButton onClick={handleLogout}>Çıkış Yap</LogoutButton>
       </UserInfo>
     </NavbarContainer>
   );
